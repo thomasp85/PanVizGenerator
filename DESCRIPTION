@@ -1,0 +1,17 @@
+Package: PanVizGenerator
+Type: Package
+Title: Generate PanViz visualisations from your pangenome
+Version: 0.0.1
+Date: 2014-11-24
+Author: Thomas Lin Pedersen
+Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
+Description: This package defines a GUI for generating PanViz visualisations
+    from generated pangenomes in matrix form (either csv or xlsx format). It
+    allows the user to define the different algorithms used for tree and 
+    distance calculations and takes care of generating the required json files
+    for the visualisation.
+License: GPL (>= 2)
+Import:
+    shiny
+Collate:
+    PanVizGenerator.R
