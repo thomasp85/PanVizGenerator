@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Streptococcus pangenome visualization</title>
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id='left' style="min-height: 100%">
+			<div id="chart"></div>
+			<div id="geneList" class='invisible'>
+				<table id='topTable' cellspacing="0" cellpadding="0" width="1700px">
+				  <tr>
+				    <td>
+				       <table id='geneListHead' cellspacing="0" cellpadding="1" width="1665px" >
+				         <tr>
+				            <td>Orthologous Group</td>
+							<td>Name</td>
+							<td>Pangenomic Group</td>
+							<td>Gene Onthology</td>
+							<td>EC. no.</td>
+				         </tr>
+				       </table>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td>
+				       <div style="width:1665px; min-height:100%; max-height:200px; overflow-x:auto;">
+				         <table id="geneListBody" cellspacing="0" cellpadding="1" width="1665px">
+				         </table>  
+				       </div>
+				    </td>
+				  </tr>
+				</table>
+			</div>
+		</div>
+		<div id="info" class='invisible'>
+			<div id="overall">
+				<h1>Pangenome statistics:</h1>
+				<table>
+					<col>
+					<col width="30%">
+					<tr>
+						<td><strong>Number of gene families:</strong></td>
+						<td class="nOverall">0</td>
+					</tr>
+					<tr>
+						<td><em>Singletons:</em></td>
+						<td class="nOverall">0</td>
+					</tr>
+					<tr>
+						<td><em>Accessory:</em></td>
+						<td class="nOverall">0</td>
+					</tr>
+					<tr>
+						<td><em>Core:</em></td>
+						<td class="nOverall">0</td>
+					</tr>
+					<tr><td>&nbsp</td></tr>
+					<tr>
+						<td><strong>Number of strains:</strong></td>
+						<td class="nOverall">0</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</html>
