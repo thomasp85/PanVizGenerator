@@ -7,19 +7,24 @@
 
 	<script src="shared/jquery.js" type="text/javascript"></script>
 	<script src="shared/shiny.js" type="text/javascript"></script>
+	<script src="shared/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!--	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> -->
 
-	<script src="scripts.js" type="text/javascript"></script>
+	<script src="code/scripts.js" type="text/javascript"></script>
 
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="shared/shiny.css"/>
 	<link rel="stylesheet" type="text/css" href="shared/bootstrap/css/bootstrap.min.css"/>
 <!--	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/> -->
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="style/styles.css">
 </head>
 <body>
  	<header>
- 		<img src="media/PanVizLogo.svg" alt="Logo">
+ 		<div>
+ 			<img src="media/PanVizLogo1.svg" alt="Logo">
+ 			<a href="http://dk.linkedin.com/pub/thomas-lin-pedersen/2/757/9b1/"><img src="media/PanVizLogo2.svg" alt="Logo"></a>
+ 		</div>
  	</header>
 
  	<section id="generate">
@@ -31,7 +36,13 @@
 		 				<div class="control-group">
 		 					<label class="control-label" for="panSelect">Pangenome</label>
 		 					<div class="controls">
-		 						<input id="panSelect" name="panSelect" type="file" accept="text/csv,text/comma-separated-values,.csv">
+			 					<div class="input-append fileinput">
+			 						<input type="text" class="form-control" readonly>
+			 						<span class="btn btn-file">
+			 							<i class="icon-folder-open"></i>
+			 							<input id="panSelect" name="panSelect" type="file" accept="text/csv,text/comma-separated-values,.csv">
+			 						</span>
+			 					</div>	
 		 					</div>
 		 				</div>
 		 				<div class="control-group">
@@ -77,8 +88,8 @@
 						</div>
 		 			</form>
 	 			</div>
-	 			<div class="span7">
-	 				<p><em>Input formatting example (use csv)</em></p>
+	 			<div class="span6">
+	 				<p class="row example"><span class="span4"><em>Input formatting example (use csv)</em></span><span class="span2"><a  id="exampleDownload" class="shiny-download-link">Download example</a></span></p>
 	 				<table class="table table-striped">
 	 					<thead>
 	 						<tr>
@@ -164,34 +175,176 @@
 
  	<section id="about">
  		<h3>About PanViz</h3>
+ 		<iframe id="showreel" src="//player.vimeo.com/video/113594599?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;loop=1" width="500" height="303" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
  		<p>
- 			PanViz is a visualisation tool developed to allow users to intuitively navigate pangenomic data generated in any way. It sets itself apart from other solutions such as blast atlas and mauve in that it is scalable and does not require the use of a reference genome...
+ 			PanViz is a visualisation tool developed to allow users to intuitively navigate pangenomic data generated in any way. It sets itself apart from other solutions such as blast atlas and mauve in that it is scalable and does not require the use of a reference genome. Furthermore it is build using modern web technologies and doesn't require installation of any software (safe for a browser). This makes it as easy to share as a PDF file, but interactive and animated in a way that a PDF can only dream about. PanViz has been developed using the amazing <a href="http://d3js.org">D3.js</a> framework in order to make your pangenomic data come to life. I sincerely hope you will enjoy playing with it - go make some cool science now!
  		</p>
- 		<video width="960" height="540" controls>
- 			<source src="media/pvShowreel.mp4" type="video/mp4"> <!-- New file when resolution has settled -->
- 			No support for HTML5 video - please upgrade your browser for the full experience
- 		</video>
 
- 		<h3>Features</h3>
+ 		<h3 class="clear">Features</h3>
  		<p>
- 			PanViz has been created to make it easy to explore the content and structure of a pangenome without relying on any specific analysis type or algorithm. As such it sports three different views into the pangenome data as well as a visual querying mechanism that is available across all views. The different views will be described below:
+ 			PanViz has been created to make it easy to explore the content and structure of a pangenome without relying on any specific analysis type or algorithm. As such it sports three different views into the pangenome data as well as a visual querying mechanism that is available across all views. The different views will be described below. Do note that one visualisation will seldom reveal all information in a data structure. While I believe PanViz is a valuable tool for exploring comparative genomics data, it should be coupled with other types of analyses and visualisations to create the full picture.
  		</p>
- 		<h4>Pangenome dynamics</h4>
+ 		<div class="row">
+ 			<div class="span6">
+ 				<h4>Pangenome dynamics</h4>
+ 				<p>
+ 					While most comparative genomics visualisation techniques are static in the sense that the pangenome being investigated doesn't change, PanViz has been build with the aim of visualising the dynamics in gene group domain as the members of the pangenome changes. The member organisms of the pangenome can at any time be updated by selecting a subtree from the full pangenome and the visualisation will update accordingly. If the circle view is active then the movement of genes between the different domains is animated and can later be queried by hovering the mouse over a GO group of interest. The currently active pangenome will at any time be shown as a blue rectangle behind the dendrogram.
+ 				</p>
+ 			</div>
+ 			<div class="span6">
+				<div id="caruselDyn" class="carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#caruselDyn" data-slide-to="0" class="active"></li>
+						<li data-target="#caruselDyn" data-slide-to="1"></li>
+						<li data-target="#caruselDyn" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="active item">
+							<img src="media/panvizDyn1.png" alt="dynamics 1" width="470">
+						</div>
+						<div class="item">
+							<img src="media/panvizDyn2.png" alt="dynamics 2" width="470">
+						</div>
+						<div class="item">
+							<img src="media/panvizDyn3.png" alt="dynamics 3" width="470">
+						</div>
+					</div>
+					<a class="carousel-control left" href="#caruselDyn" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#caruselDyn" data-slide="next">&rsaquo;</a>
+				</div>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="span6">
+ 				<div id="caruselStrain" class="carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#caruselStrain" data-slide-to="0" class="active"></li>
+						<li data-target="#caruselStrain" data-slide-to="1"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="active item">
+							<img src="media/strainCom1.png" alt="comparison 1" width="470">
+						</div>
+						<div class="item">
+							<img src="media/strainCom2.png" alt="comparison 2" width="470">
+						</div>
+					</div>
+					<a class="carousel-control left" href="#caruselStrain" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#caruselStrain" data-slide="next">&rsaquo;</a>
+				</div>
+ 			</div>
+ 			<div class="span6">
+ 				<h4>Strain-pangenome comparison</h4>
+ 				<p>
+ 					Apart from looking at the dynamics of a pangenome, the currently selected pangenome can at any time be compared to one or two strains by selecting these - either in the dendrogram or in the scatterplot. Comparison is shown by drawing links between the top level GO's from the strain and to their respective locations in the pangenome. The thickness of the link indicate the number of genegroups and the colour the domain they link to. If two strains are selected each link has two shades. The darkest part indicate the gene groups the two strains have in common, while the light part indicate gene groups unique to that strain. Strains do not need to be a part of the pangenome they are compared to. If they are not, the number of genes not a part of the pangenome in each GO is indicated by a lack of link.
+ 				</p>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="span6">
+ 				<h4>Gene ontology navigation</h4>
+ 				<p>
+ 					While most views in the visualisation only utilises the top level gene ontology annotation, the full GO graph is available for navigation by clicking on one of the GO wedges in the circle view or GO bars in the strain comparison view. This will let you dive into the gene groups contained in this ontology by zooming in on a treemap where each node/rectangle is scaled to the number of gene groups contained within. By updating the pangenome while navigating the gene ontology it is possible to see how the distributions of gene ontology terms changes. Likewise differences between distributions within the Core, Accessory and Singleton domains can be seen in this way.
+ 				</p>
+ 			</div>
+ 			<div class="span6">
+ 				<div id="caruselGO" class="carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#caruselGO" data-slide-to="0" class="active"></li>
+						<li data-target="#caruselGO" data-slide-to="1"></li>
+						<li data-target="#caruselGO" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="active item">
+							<img src="media/goNav1.png" alt="GO navigation 1" width="470">
+						</div>
+						<div class="item">
+							<img src="media/goNav2.png" alt="GO navigation 2" width="470">
+						</div>
+						<div class="item">
+							<img src="media/goNav3.png" alt="GO navigation 3" width="470">
+						</div>
+					</div>
+					<a class="carousel-control left" href="#caruselGO" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#caruselGO" data-slide="next">&rsaquo;</a>
+				</div>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="span6">
+ 				<div id="caruselVis" class="carousel slide">
+					<ol class="carousel-indicators">
+						<li data-target="#caruselVis" data-slide-to="0" class="active"></li>
+						<li data-target="#caruselVis" data-slide-to="1"></li>
+						<li data-target="#caruselVis" data-slide-to="2"></li>
+						<li data-target="#caruselVis" data-slide-to="3"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="active item">
+							<img src="media/visQuery1.png" alt="Visual querying 1" width="470">
+						</div>
+						<div class="item">
+							<img src="media/visQuery2.png" alt="Visual querying 2" width="470">
+						</div>
+						<div class="item">
+							<img src="media/visQuery3.png" alt="Visual querying 3" width="470">
+						</div>
+						<div class="item">
+							<img src="media/visQuery4.png" alt="Visual querying 4" width="470">
+						</div>
+					</div>
+					<a class="carousel-control left" href="#caruselVis" data-slide="prev">&lsaquo;</a>
+					<a class="carousel-control right" href="#caruselVis" data-slide="next">&rsaquo;</a>
+				</div>
+ 			</div>
+ 			<div class="span6">
+ 				<h4>Visual querying</h4>
+ 				<p>
+ 					While dynamic visualisations are nice they often make you wonder. After all this is what they are designed for. Because of this it should also be possible to extract the underlying information for each visual element in order to test hypothesis or build new ones. As all visual elements in PanViz (except for scales and legends) represent a set of gene groups it has been made easy for the user to select these and make set operations on them (union, intersect, compliment etc.). The list in the bottom of the visualisation contains the current set (the full list of gene groups at the onset), and gets updated as elements are queried. Using these tools it is possible to make very powerful selections in a visually intuitive way.
+ 				</p>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="span6">
+ 				<h4>Easy sharing</h4>
+		 		<p>
+		 			PanViz is build with modern webtechnologies and only requires a fairly recent webbrowser to work. The provided file is fully selfcontained and can be opened without any internet connection, but is also fit to be hosted on a server to be shared as a webpage. The lack of need for any additional installation makes this as easy to share as the more common static visualisations usually found in scientific litterature.
+		 		</p>
+ 			</div>
+ 			<div class="span6" id="share">
+ 				<img src="media/share.svg" alt="Share">
+ 			</div>
+ 		</div>
 
  		<h3>References</h3>
  		<p>
- 			An article at some point
+ 			<strong>Pedersen, Thomas Lin</strong> (2015). <em>PanViz. Scalable and unbiased pangenome visualisation.</em> <strong>In preparation</strong>
  		</p>
  	</section>
 
  	<footer>
  		<div>
- 			<span>
-	 			PanVizGenerator
-	 		</span>
-	 		<span>
-	 			Version 0.1.0
-	 		</span>
+ 			<div id="github">
+ 				<a href="https://github.com/thomasp85/PanVizGenerator" title="PanVizGenerator at GitHub">
+ 					<span>hosted on </span>
+ 					<img src="media/GitHubLogo.svg" alt="GitHub">
+ 				</a>
+ 				<img src="media/bugs.svg" alt="bug reports">
+ 			</div>
+ 			<div>
+ 				<a href="http://shiny.rstudio.com" title="Shiny">
+ 					<span>build with </span>
+ 					<span id="shiny">Shiny</span>
+ 				</a>
+ 			</div>
+ 			<div>
+ 				<span>
+	 				PanVizGenerator
+		 		</span>
+		 		<span>
+		 			Version 0.3.0
+		 		</span>
+ 			</div>
  		</div>
  	</footer>
 </body>

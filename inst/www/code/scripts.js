@@ -53,12 +53,22 @@ function retryUpload() {
 	toggleError({state: false, message: ''});
 	$('#panSelect').replaceWith($('#panSelect').get(0).outerHTML);
 	$('#panSelect').on('change', function() {toggleGenerateBtn(false)});
+	$('.fileinput :text').val('');
 	toggleGenerateBtn(true);
 
 	Shiny.bindAll();
 
 }
-
+$(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+});
+$(document).on('fileselect', '.btn-file :file', function(event, numFiles, label) {
+        var input = $(this).parents('.fileinput').find(':text');
+        input.val(label);
+    });
 $(document).ready(function() {
 	// Shiny handlers
 	Shiny.addCustomMessageHandler('toggleGenerateBtn', toggleGenerateBtn);
@@ -71,4 +81,7 @@ $(document).ready(function() {
 	$('#panSelect').on('change', function() {toggleGenerateBtn(false)});
 	$('#generateBtn').on('click', function() {toggleProgress(true)});
 	$('#download').on('click', retryUpload);
+	$(document).on('scroll', function(e) {
+		$('header').toggleClass('scroll', window.pageYOffset > 30);
+	});
 })

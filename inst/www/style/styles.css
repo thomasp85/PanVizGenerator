@@ -1,0 +1,173 @@
+html {
+    position: relative;
+    background-color: steelblue;
+}
+body {
+	font-family: "Avenir Next Condensed", "Avenir Next", "Avenir", "Helvetica", sans-serif;
+	background-color: white;
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+header {
+	position: fixed;
+	top: 0;
+	width: 1000px;
+	max-width: 100%;
+	padding: 10px 0 60px 0;
+	z-index: 100;
+
+	background: -webkit-linear-gradient(rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /*Safari 5.1-6*/
+	background: -o-linear-gradient(rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /*Fx 3.6-15*/
+	background: linear-gradient(rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%); /*Standard*/
+}
+header div {
+	margin: 0 10px;
+}
+header img {
+	height: 160px;
+	max-width: 54.903%;
+
+	-webkit-transition: height 0.5s linear;
+	transition: height 0.2s linear;
+}
+header.scroll img {
+	height: 70px;
+
+	-webkit-transition: height 0.5s linear;
+	transition: height 0.5s linear;
+}
+header img:last-child {
+	float: right;
+	max-width: 35.097%;
+}
+header:after {
+	clear: both;
+}
+body > section:first-of-type {
+	padding-top: 200px;
+}
+section {
+	margin: 10px;
+}
+footer {
+	background: goldenrod;
+	color: white;
+	min-height: 3em;
+}
+footer>div {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+footer>div>div {
+	display: table-cell;
+	vertical-align: bottom;
+	padding: 10px;
+	padding-bottom: 0;
+}
+footer>div>div:nth-child(2) {
+	text-align: center;
+}
+footer>div>div:last-child {
+	text-align: right;
+}
+footer a, footer a:hover {
+	color: white;
+	text-decoration: none;
+}
+#about .span6:first-child {
+	margin-right: 40px;
+}
+#github img {
+	height: 1.75em;
+	vertical-align: baseline;
+}
+#github a img {
+	height: 1.5em;
+}
+#shiny {
+	font-size: 2em;
+	font-family: "Source Sans Pro", "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.hidden {
+	display: none;
+}
+
+.controls {
+	position: relative;
+}
+.clear {
+	clear: both;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.fileinput input[type=text] {
+	width: 164px;
+	cursor: default;
+}
+a.btn {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.example span:nth-child(2n) {
+	text-align: right;
+}
+.carousel-indicators li {
+	background-color: #222;
+	opacity: 0.2;
+}
+.carousel-indicators li.active {
+	background-color: #222;
+	opacity: 0.5;
+}
+#progressOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.8);
+	text-align: center;
+}
+#progressOverlay h4 {
+	margin-top: 150px;
+}
+#progressOverlay .progress {
+	width: 300px;
+	margin: 0 auto 1em;
+}
+
+#showreel {
+	float: right;
+	margin-left: 15px;
+}
+
+#about .row {
+	margin-top: 30px;
+}
+
+#share {
+	text-align: center;
+}
+#share img {
+	height: 200px;
+}
