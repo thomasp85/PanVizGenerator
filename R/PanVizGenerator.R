@@ -19,7 +19,6 @@ server <- function(input, output, session) {
     options(shiny.maxRequestSize=100*1024^2)
     panviz <- reactiveValues(path=NA)
     observe({
-        #browser()
         if(input$generateBtn == 0) return(NULL)
         
         file <- isolate({input$panSelect})
@@ -92,6 +91,8 @@ server <- function(input, output, session) {
         filename = 'Pangenome.csv',
         content = function(file) {
             exampleFile <- system.file('extdata', 'exampleData.csv', package = 'PanVizGenerator')
+            print(exampleFile)
+            print(file)
             file.copy(from=exampleFile, to=file)
         }
     )
