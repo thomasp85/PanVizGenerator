@@ -31,24 +31,24 @@
  		<div class="controls well">
  			<h3>Generate PanViz</h3>
  			<div class="row">
-	 			<div class="span6">
+	 			<div class="col-md-6">
 	 				<form class="form-horizontal">
-		 				<div class="control-group">
-		 					<label class="control-label" for="panSelect">Pangenome</label>
-		 					<div class="controls">
-			 					<div class="input-append fileinput">
+		 				<div class="form-group">
+		 					<label class="control-label col-md-5" for="panSelect">Pangenome</label>
+		 					<div class="controls col-md-7">
+			 					<div class="input-group fileinput">
 			 						<input type="text" class="form-control" readonly>
-			 						<span class="btn btn-file">
-			 							<i class="icon-folder-open"></i>
+			 						<span class="btn btn-default btn-file input-group-addon">
+			 							<span class="glyphicon glyphicon-folder-open"></span>
 			 							<input id="panSelect" name="panSelect" type="file" accept="text/csv,text/comma-separated-values,.csv">
 			 						</span>
 			 					</div>	
 		 					</div>
 		 				</div>
-		 				<div class="control-group">
-		 					<label class="control-label" for="distance">Distance measure</label>
-		 					<div class="controls">
-		 						<select id="distance">
+		 				<div class="form-group">
+		 					<label class="control-label col-md-5" for="distance">Distance measure</label>
+		 					<div class="controls col-md-7">
+		 						<select id="distance" class="form-control">
 		 							<option value="euclidean">Euclidean</option>
 		 							<option value="maximum">Maximum</option>
 		 							<option value="manhattan">Manhattan</option>
@@ -58,10 +58,10 @@
 		 						</select>
 		 					</div>
 		 				</div>
-		 				<div class="control-group">
-		 					<label class="control-label" for="clustering">Clustering method</label>
-		 					<div class="controls">
-		 						<select id="clustering">
+		 				<div class="form-group">
+		 					<label class="control-label col-md-5" for="clustering">Clustering method</label>
+		 					<div class="controls col-md-7">
+		 						<select id="clustering" class="form-control">
 		 							<option value="ward.D2">Ward's</option>
 		 							<option value="single">Single linkage</option>
 		 							<option value="complete">Complete linkage</option>
@@ -72,24 +72,24 @@
 		 						</select>
 		 					</div>
 		 				</div>
-		 				<div class="control-group">
-		 					<label class="control-label" for="scale">PCA preprocessing</label>
-		 					<div class="controls">
-								<label class="checkbox">
-									<input type="checkbox" id="scale" checked>Scale
+		 				<div class="form-group">
+		 					<label class="control-label col-md-5" for="scale">PCA preprocessing</label>
+		 					<div class="controls col-md-7">
+								<label class="checkbox-inline">
+									<input type="checkbox" id="scale" checked/>Scale
 								</label>
-								<label class="checkbox">
-									<input type="checkbox" id="center" checked>Center
+								<label class="checkbox-inline">
+									<input type="checkbox" id="center" checked/>Center
 								</label>
 		 					</div>
 		 				</div>
-						<div class="form-actions">
+						<div class="form-actions col-md-7 col-md-offset-5">
 							<button id="generateBtn" type="button" class="btn btn-primary action-button" disabled>Generate</button>
 						</div>
 		 			</form>
 	 			</div>
-	 			<div class="span6">
-	 				<p class="row example"><span class="span4"><em>Input formatting example (use csv)</em></span><span class="span2"><a  id="exampleDownload" class="shiny-download-link">Download example</a></span></p>
+	 			<div class="col-md-6">
+	 				<p class="row example"><span class="col-md-8"><em>Input formatting example (use csv)</em></span><span class="col-md-4"><a  id="exampleDownload" class="shiny-download-link" target="_blank">Download example</a></span></p>
 	 				<table class="table table-striped">
 	 					<thead>
 	 						<tr>
@@ -164,11 +164,11 @@
  			<div id="progressOverlay" class="hidden">
  				<h4>Generating PanViz</h4>
 		 		<div class="progress progress-striped active">
-					<div class="bar" style="width: 100%;"></div>
+					<div class="progress-bar" style="width: 100%;"></div>
 				</div>
 				<p class="errorMessage hidden">Error message</p>
-				<a id="download" class="btn btn-primary success hidden shiny-download-link"><i class="icon-download-alt icon-white"></i> Download</a>
-				<button class="btn failure hidden">Retry</button>
+				<a id="download" class="btn btn-primary success hidden shiny-download-link" target="_blank"><i class="icon-download-alt icon-white"></i> Download</a>
+				<button class="btn btn-default failure hidden">Retry</button>
 		 	</div>
  		</div>
  	</section>
@@ -185,13 +185,13 @@
  			PanViz has been created to make it easy to explore the content and structure of a pangenome without relying on any specific analysis type or algorithm. As such it sports three different views into the pangenome data as well as a visual querying mechanism that is available across all views. The different views will be described below. Do note that one visualisation will seldom reveal all information in a data structure. While I believe PanViz is a valuable tool for exploring comparative genomics data, it should be coupled with other types of analyses and visualisations to create the full picture.
  		</p>
  		<div class="row">
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<h4>Pangenome dynamics</h4>
  				<p>
  					While most comparative genomics visualisation techniques are static in the sense that the pangenome being investigated doesn't change, PanViz has been build with the aim of visualising the dynamics in gene group domain as the members of the pangenome changes. The member organisms of the pangenome can at any time be updated by selecting a subtree from the full pangenome and the visualisation will update accordingly. If the circle view is active then the movement of genes between the different domains is animated and can later be queried by hovering the mouse over a GO group of interest. The currently active pangenome will at any time be shown as a blue rectangle behind the dendrogram.
  				</p>
  			</div>
- 			<div class="span6">
+ 			<div class="col-md-6">
 				<div id="caruselDyn" class="carousel slide">
 					<ol class="carousel-indicators">
 						<li data-target="#caruselDyn" data-slide-to="0" class="active"></li>
@@ -209,13 +209,19 @@
 							<img src="media/panvizDyn3.png" alt="dynamics 3" width="470">
 						</div>
 					</div>
-					<a class="carousel-control left" href="#caruselDyn" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#caruselDyn" data-slide="next">&rsaquo;</a>
+					<a class="carousel-control left" href="#caruselDyn" data-slide="prev">
+    				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control right" href="#caruselDyn" data-slide="next">
+    				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+					</a>
 				</div>
  			</div>
  		</div>
  		<div class="row">
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<div id="caruselStrain" class="carousel slide">
 					<ol class="carousel-indicators">
 						<li data-target="#caruselStrain" data-slide-to="0" class="active"></li>
@@ -229,11 +235,17 @@
 							<img src="media/strainCom2.png" alt="comparison 2" width="470">
 						</div>
 					</div>
-					<a class="carousel-control left" href="#caruselStrain" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#caruselStrain" data-slide="next">&rsaquo;</a>
+					<a class="carousel-control left" href="#caruselStrain" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+					<a class="carousel-control right" href="#caruselStrain" data-slide="next">
+        			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+					</a>
 				</div>
  			</div>
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<h4>Strain-pangenome comparison</h4>
  				<p>
  					Apart from looking at the dynamics of a pangenome, the currently selected pangenome can at any time be compared to one or two strains by selecting these - either in the dendrogram or in the scatterplot. Comparison is shown by drawing links between the top level GO's from the strain and to their respective locations in the pangenome. The thickness of the link indicate the number of genegroups and the colour the domain they link to. If two strains are selected each link has two shades. The darkest part indicate the gene groups the two strains have in common, while the light part indicate gene groups unique to that strain. Strains do not need to be a part of the pangenome they are compared to. If they are not, the number of genes not a part of the pangenome in each GO is indicated by a lack of link.
@@ -241,13 +253,13 @@
  			</div>
  		</div>
  		<div class="row">
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<h4>Gene ontology navigation</h4>
  				<p>
  					While most views in the visualisation only utilises the top level gene ontology annotation, the full GO graph is available for navigation by clicking on one of the GO wedges in the circle view or GO bars in the strain comparison view. This will let you dive into the gene groups contained in this ontology by zooming in on a treemap where each node/rectangle is scaled to the number of gene groups contained within. By updating the pangenome while navigating the gene ontology it is possible to see how the distributions of gene ontology terms changes. Likewise differences between distributions within the Core, Accessory and Singleton domains can be seen in this way.
  				</p>
  			</div>
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<div id="caruselGO" class="carousel slide">
 					<ol class="carousel-indicators">
 						<li data-target="#caruselGO" data-slide-to="0" class="active"></li>
@@ -265,13 +277,19 @@
 							<img src="media/goNav3.png" alt="GO navigation 3" width="470">
 						</div>
 					</div>
-					<a class="carousel-control left" href="#caruselGO" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#caruselGO" data-slide="next">&rsaquo;</a>
+					<a class="carousel-control left" href="#caruselGO" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+					<a class="carousel-control right" href="#caruselGO" data-slide="next">
+        			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+					</a>
 				</div>
  			</div>
  		</div>
  		<div class="row">
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<div id="caruselVis" class="carousel slide">
 					<ol class="carousel-indicators">
 						<li data-target="#caruselVis" data-slide-to="0" class="active"></li>
@@ -293,11 +311,17 @@
 							<img src="media/visQuery4.png" alt="Visual querying 4" width="470">
 						</div>
 					</div>
-					<a class="carousel-control left" href="#caruselVis" data-slide="prev">&lsaquo;</a>
-					<a class="carousel-control right" href="#caruselVis" data-slide="next">&rsaquo;</a>
+					<a class="carousel-control left" href="#caruselVis" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+					<a class="carousel-control right" href="#caruselVis" data-slide="next">
+        			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+					</a>
 				</div>
  			</div>
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<h4>Visual querying</h4>
  				<p>
  					While dynamic visualisations are nice they often make you wonder. After all this is what they are designed for. Because of this it should also be possible to extract the underlying information for each visual element in order to test hypothesis or build new ones. As all visual elements in PanViz (except for scales and legends) represent a set of gene groups it has been made easy for the user to select these and make set operations on them (union, intersect, compliment etc.). The list in the bottom of the visualisation contains the current set (the full list of gene groups at the onset), and gets updated as elements are queried. Using these tools it is possible to make very powerful selections in a visually intuitive way.
@@ -305,13 +329,13 @@
  			</div>
  		</div>
  		<div class="row">
- 			<div class="span6">
+ 			<div class="col-md-6">
  				<h4>Easy sharing</h4>
 		 		<p>
 		 			PanViz is build with modern webtechnologies and only requires a fairly recent webbrowser to work. The provided file is fully selfcontained and can be opened without any internet connection, but is also fit to be hosted on a server to be shared as a webpage. The lack of need for any additional installation makes this as easy to share as the more common static visualisations usually found in scientific litterature.
 		 		</p>
  			</div>
- 			<div class="span6" id="share">
+ 			<div class="col-md-6" id="share">
  				<img src="media/share.svg" alt="Share">
  			</div>
  		</div>

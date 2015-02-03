@@ -23,7 +23,7 @@ function toggleProgress(running) {
 */
 function toggleSuccess(success) {
 	$('#progressOverlay .progress').toggleClass('active', !success);
-	$('#progressOverlay .bar').toggleClass('bar-success', success);
+	$('#progressOverlay .progress-bar').toggleClass('progress-bar-success', success);
 	$('#progressOverlay a.success').toggleClass('hidden', !success);
 }
 
@@ -35,7 +35,7 @@ function toggleSuccess(success) {
 */
 function toggleError(error) {
 	$('#progressOverlay .progress').toggleClass('active', !error.state);
-	$('#progressOverlay .bar').toggleClass('bar-danger', error.state);
+	$('#progressOverlay .progress-bar').toggleClass('progress-bar-danger', error.state);
 	$('#progressOverlay button.failure').toggleClass('hidden', !error.state);
 	$('#progressOverlay .errorMessage')
 		.text(error.message)
