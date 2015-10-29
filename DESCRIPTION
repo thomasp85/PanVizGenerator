@@ -1,18 +1,35 @@
 Package: PanVizGenerator
 Type: Package
 Title: Generate PanViz visualisations from your pangenome
-Version: 0.4.0
-Date: 2015-02-03
+Version: 0.5.1
+Date: 2015-10-28
 Author: Thomas Lin Pedersen
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
-Description: This package defines a GUI for generating PanViz visualisations
-    from generated pangenomes in matrix form (either csv or xlsx format). It
-    allows the user to define the different algorithms used for tree and
-    distance calculations and takes care of generating the required json files
-    for the visualisation.
+Description: PanViz is a JavaScript based visualisation tool for functionaly
+    annotated pangenomes. PanVizGenerator is a companion for PanViz that
+    facilitates the necessary data preprocessing step necessary to create a
+    working PanViz visualization. The output is fully self-contained so the
+    recipient of the visualization does not need R or PanVizGenerator installed.
 License: GPL (>= 2)
-Imports:
+URL: https://github.com/thomasp85/PanVizGenerator
+BugReports: https://github.com/thomasp85/PanVizGenerator/issues
+biocViews: ComparativeGenomics, GUI, Visualization
+Depends: 
+    methods
+Imports: 
     shiny,
     tools,
     jsonlite,
-    pcaMethods
+    pcaMethods,
+    FindMyFriends,
+    igraph
+VignetteBuilder: knitr
+Suggests: BiocStyle, knitr, rmarkdown,
+    testthat
+Collate: 
+    'GO.R'
+    'aaa.R'
+    'IO.R'
+    'panviz.R'
+    'shinyStuff.R'
+    'zzz.R'

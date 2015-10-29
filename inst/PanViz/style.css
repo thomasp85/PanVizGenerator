@@ -6,7 +6,7 @@ body {
 	margin: 0;
 }
 h1 {
-	text-align: center
+	text-align: center;
 }
 #info {
 	padding: 0 15px;
@@ -15,16 +15,29 @@ h1 {
 	top: 0;
 	min-height: 100%;
 }
+#logo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+#logo svg {
+	width: 200px;
+	margin: auto;
+	display: block;
+}
 #geneList {
 	width: 1800px;
 	background: whitesmoke;
 	padding-left: 20px;
 	padding-top: 15px;
 	padding-bottom: 20px;
-	min-height: 100%
+	min-height: 100%;
 }
 #topTable table tr td {
 	border-bottom: 1px solid lightgrey;
+}
+#geneList tr.hidden {
+	display: none;
 }
 #geneList tr td {
 	width: 10%;
@@ -61,6 +74,9 @@ h1 {
 	fill-opacity: 1;
 	stroke-width: 2;
 }
+.inSubPan .domainCell{
+	background: goldenrod;
+}
 .inSubPan.Singleton .domainCell{
 	background: goldenrod;
 }
@@ -69,6 +85,18 @@ h1 {
 }
 .inSubPan.Core .domainCell {
 	background: brown;
+}
+.domainCell::after{
+	content: '---';
+}
+.inSubPan.Singleton .domainCell::after{
+	content: 'Singleton';
+}
+.inSubPan.Accessory .domainCell::after{
+	content: 'Accessory';
+}
+.inSubPan.Core .domainCell::after{
+	content: 'Core';
 }
 #circle .selectOn {
 	opacity: 0.5;
@@ -121,7 +149,7 @@ h1 {
 }
 #legend td {
 	width: 33.3333%;
-	padding-right: 1px
+	padding-right: 1px;
 }
 #legend td.hover{
 	background-color: white;
@@ -285,7 +313,7 @@ svg text {
 .grandparent rect{
 	fill: steelblue;
 	stroke: white;
-	stroke-width: 3
+	stroke-width: 3;
 }
 .grandparent text{
 	fill: white;
@@ -293,5 +321,70 @@ svg text {
 .trapez {
 	stroke: white;
 	stroke-width: 3;
-	fill: lightgrey
+	fill: lightgrey;
+}
+@-webkit-keyframes load {
+	0%		{fill-opacity: 1;}
+	100%	{fill-opacity: 0;}
+}
+@keyframes load {
+	0%		{fill-opacity: 1;}
+	100%	{fill-opacity: 0;}
+}
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+#loading svg {
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 50%;
+	width: 50%;
+}
+#loading .core {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}
+#loading .accessory {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+#loading .singleton {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
 }
