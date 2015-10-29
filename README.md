@@ -1,4 +1,6 @@
-# PanVizGenerator
+![PanVizGenerator](inst/www/media/PanVizLogo1.svg)
+
+* * *
 
 [![Build Status](https://travis-ci.org/thomasp85/PanVizGenerator.svg?branch=master)](https://travis-ci.org/thomasp85/PanVizGenerator)
 [![codecov.io](https://codecov.io/github/thomasp85/PanVizGenerator/coverage.svg?branch=master)](https://codecov.io/github/thomasp85/PanVizGenerator?branch=master)
