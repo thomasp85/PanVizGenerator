@@ -198,6 +198,14 @@ graphToGo <- function(graph) {
     go$edges$to <- match(go$edges$to, go$vertices$name)
     go$vertices$name <- go$vertices$.name
     go$vertices$.name <- NULL
+    edgeColOrder <- order(match(names(go$edges), c('from', 'to', 'type')))
+    go$edges <- go$edges[, edgeColOrder]
+    vertexColOrder <- order(match(names(go$vertices),
+                                  c("id", "name", "namespace", "def", "alt_id",
+                                    "comment", "is_obsolete", "subset",
+                                    "synonym", "xref")))
+    go$vertices <- go$vertices[, vertexColOrder]
+    rownames(go$vertices) <- NULL
     go
 }
 #' @importFrom igraph induced_subgraph V E vertex_attr vertex_attr<- vertex_attr_names gorder
