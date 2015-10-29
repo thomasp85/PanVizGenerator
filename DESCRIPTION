@@ -14,9 +14,9 @@ License: GPL (>= 2)
 URL: https://github.com/thomasp85/PanVizGenerator
 BugReports: https://github.com/thomasp85/PanVizGenerator/issues
 biocViews: ComparativeGenomics, GUI, Visualization
-Depends: 
+Depends:
     methods
-Imports: 
+Imports:
     shiny,
     tools,
     jsonlite,
@@ -24,9 +24,13 @@ Imports:
     FindMyFriends,
     igraph
 VignetteBuilder: knitr
-Suggests: BiocStyle, knitr, rmarkdown,
-    testthat
-Collate: 
+Suggests:
+    BiocStyle,
+    knitr,
+    rmarkdown,
+    testthat,
+    digest
+Collate:
     'GO.R'
     'aaa.R'
     'IO.R'
