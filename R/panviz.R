@@ -193,42 +193,7 @@ setMethod(
                 stop('Unable to create folder: ', location)
             }
         }
-        mode(object) <- 'integer'
-        if (any(is.na(object))) {
-            stop('object must be a matrix of integers or convertibel to one')
-        }
-        if (is.null(colnames(object))) {
-            stop('columns in object must be named')
-        }
-        if (ncol(object) < 3) {
-            stop('Pangenome must contain at least 3 genomes')
-        }
-        if (missing(name) || is.null(name)) {
-            if (is.null(rownames(object))) {
-                stop('Gene groups must be named')
-            } else {
-                name <- rownames(object)
-            }
-        }
-        if (missing(ec) || is.null(ec)) {
-            ec <- as.list(rep(NA, nrow(object)))
-        }
-        elementLengths <- c(nrow(object), length(name), length(go), length(ec))
-        if (max(elementLengths) - min(elementLengths) != 0) {
-            stop('Number of gene groups must correspond between object, name, go and ec')
-        }
-        go <- formatGO(go)
-        ec <- formatEC(ec)
-        data <- list(
-            pangenome = as.data.frame(object), 
-            genes = data.frame(
-                name = unlist(name), 
-                go = I(go), 
-                ec = I(ec), 
-                stringsAsFactors = FALSE
-            )
-        )
-        data <- stripEmpty(data)
+        data <- formatData(object, name, go, ec)
         createPanData(data, location, ...)
         copyPanVizFiles(location)
         if (consolidate) {
@@ -313,4 +278,43 @@ consolidateFiles <- function(dir) {
     unlink(jsFile)
     unlink(dataFile)
     write(html, file = htmlFile)
+}
+formatData <- function(object, name, go, ec) {
+    if (!inherits(object, 'matrix')) stop('object must be a matrix')
+    mode(object) <- 'integer'
+    if (any(is.na(object))) {
+        stop('object must be a matrix of integers or convertibel to one')
+    }
+    if (is.null(colnames(object))) {
+        stop('columns in object must be named')
+    }
+    if (ncol(object) < 3) {
+        stop('Pangenome must contain at least 3 genomes')
+    }
+    if (missing(name) || is.null(name)) {
+        if (is.null(rownames(object))) {
+            stop('Gene groups must be named')
+        } else {
+            name <- rownames(object)
+        }
+    }
+    if (missing(ec) || is.null(ec)) {
+        ec <- as.list(rep(NA, nrow(object)))
+    }
+    elementLengths <- c(nrow(object), length(name), length(go), length(ec))
+    if (max(elementLengths) - min(elementLengths) != 0) {
+        stop('Number of gene groups must correspond between object, name, go and ec')
+    }
+    go <- formatGO(go)
+    ec <- formatEC(ec)
+    data <- list(
+        pangenome = as.data.frame(object), 
+        genes = data.frame(
+            name = unlist(name), 
+            go = I(go), 
+            ec = I(ec), 
+            stringsAsFactors = FALSE
+        )
+    )
+    stripEmpty(data)
 }
