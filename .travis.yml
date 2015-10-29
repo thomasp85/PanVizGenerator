@@ -6,7 +6,6 @@ sudo: required
 bioc_required: true
 r_github_packages:
   - thomasp85/FindMyFriends
-r_packages:
-  - covr
+  - jimhester/covr
 after_success:
-  - Rscript -e 'covr::codecov()
+  - Rscript -e 'library(covr);codecov()'
