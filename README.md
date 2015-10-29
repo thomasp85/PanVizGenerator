@@ -1,4 +1,4 @@
-![PanVizGenerator](inst/www/media/PanVizLogo1.svg)
+![PanVizGenerator](https://cdn.rawgit.com/thomasp85/PanVizGenerator/master/inst/www/media/PanVizLogo1.svg)
 
 * * *
 
