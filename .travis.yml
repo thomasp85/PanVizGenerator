@@ -3,6 +3,9 @@
 language: r
 warnings_are_errors: true
 sudo: required
+bioc_required: true
+r_github_packages:
+  - thomasp85/FindMyFriends
 r_packages:
   - covr
 after_success:
