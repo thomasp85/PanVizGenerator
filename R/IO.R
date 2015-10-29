@@ -150,7 +150,7 @@ createGO <- function() {
     go <- pruneGO(go, relations = c('is_a', 'replaced_by'), 
                   metadata = c('id', 'name', 'namespace', 'def', 'is_obsolete', 
                                'alt_id', 'subset'))
-    toJSON(go, dataframe = 'columns')
+    toJSON(go, dataframe = 'columns', rownames = FALSE)
 }
 
 # HELPERS
