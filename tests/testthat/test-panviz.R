@@ -43,26 +43,26 @@ test_that("Data formatting works", {
 
 unlink(list.files(outputDir, full.names = TRUE))
 test_that("data.frame input works", {
-    panviz(pangenome, name=name, go=go, ec=ec, location = outputDir)
+    panviz(pangenome, name=name, go=go, ec=ec, location = outputDir, scale = FALSE)
     expect_equal(sort(list.files(outputDir)), c("PanViz.html", "README"))
 })
 
 unlink(list.files(outputDir, full.names = TRUE))
 test_that("matrix input works", {
-    panviz(as.matrix(pangenome), name=name, go=go, ec=ec, location = outputDir)
+    panviz(as.matrix(pangenome), name=name, go=go, ec=ec, location = outputDir, scale = FALSE)
     expect_equal(sort(list.files(outputDir)), c("PanViz.html", "README"))
 })
 
 unlink(list.files(outputDir, full.names = TRUE))
 test_that("csv input works", {
-    panviz(csvFile, location = outputDir)
+    panviz(csvFile, location = outputDir, scale = FALSE)
     expect_equal(sort(list.files(outputDir)), c("PanViz.html", "README"))
 })
 
 unlink(list.files(outputDir, full.names = TRUE))
 test_that("FMF input works", {
     expect_error(panviz(pangenomeFMF, location = outputDir))
-    panviz(pangenomeFMFannot, location = outputDir)
+    panviz(pangenomeFMFannot, location = outputDir, scale = FALSE)
     expect_equal(sort(list.files(outputDir)), c("PanViz.html", "README"))
 })
 

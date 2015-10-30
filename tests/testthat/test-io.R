@@ -20,11 +20,11 @@ test_that("createGeneInfo works", {
 })
 
 test_that("createScatter works", {
-    expect_equal(digest(createScatter(data)), "43c144d9f16242c28ee878c4b442fe73")
-    expect_equal(digest(createScatter(data, dist = 'binary')), "3eeae5f3b9ce4e6c63faabe990faa7fe")
+    expect_equal(digest(suppressWarnings(createScatter(data))), "43c144d9f16242c28ee878c4b442fe73")
+    expect_equal(digest(suppressWarnings(createScatter(data, dist = 'binary'))), "3eeae5f3b9ce4e6c63faabe990faa7fe")
     expect_error(createScatter(data, dist = 'test'))
     expect_equal(digest(createScatter(data, scale = FALSE)), "0bfd5ea88c1b760d27573d9aa20ccb54")
-    expect_equal(digest(createScatter(data, center = FALSE)), "182889b54c676ef1c7504c9c43631392")
+    expect_equal(suppressWarnings(digest(createScatter(data, center = FALSE))), "182889b54c676ef1c7504c9c43631392")
 })
 
 test_that("createCluster works", {
