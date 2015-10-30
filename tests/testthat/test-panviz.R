@@ -68,8 +68,8 @@ test_that("FMF input works", {
 
 unlink(list.files(outputDir, full.names = TRUE))
 test_that("File consolidation works", {
-    panviz(as.matrix(pangenome), name=name, go=go, ec=ec, location = outputDir, consolidate = FALSE)
-    expect_equal(sort(list.files(outputDir)), c("data.js", "PanViz.html", "README", "script.js", "style.css"))
+    panviz(as.matrix(pangenome), name=name, go=go, ec=ec, location = outputDir, consolidate = FALSE, scale = FALSE)
+    expect_true(all(list.files(outputDir) %in% c("data.js", "PanViz.html", "README", "script.js", "style.css")))
     consolidateFiles(outputDir)
     expect_equal(sort(list.files(outputDir)), c("PanViz.html", "README"))
     unlink(list.files(outputDir, full.names = TRUE))
