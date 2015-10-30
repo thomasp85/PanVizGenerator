@@ -37,3 +37,4 @@ Collate:
     'panviz.R'
     'shinyStuff.R'
     'zzz.R'
+RoxygenNote: 5.0.0
