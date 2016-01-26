@@ -1,0 +1,1 @@
+shiny::shinyServer(PanVizGenerator:::server)
