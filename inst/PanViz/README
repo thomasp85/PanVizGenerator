@@ -1,0 +1,17 @@
+To see your visualisation open the index.html file in your browser of choice 
+(provided it is relatively modern).
+
+All files that comes alongside the index.html file are necessary for the
+visualisation to work. Do not remove them and alter them only if you are 100%
+sure at what you are doing.
+
+PanViz could not be possible without D3.js, so a huge applause goes out to Mike
+Bostock and everyone else related to that project. Furthermore it incoorporate
+code from Marcelo Criscuolo (https://github.com/mcrisc/SetJS). Thanks go out to
+him as well.
+
+If you are a happy user or have feature requests or bug reports, please let me 
+know at thomasp85@gmail.com or through GitHub 
+(https://github.com/thomasp85/PanVizGenerator/issues)
+
+Thanks you for trying out PanViz - Thomas Lin Pedersen

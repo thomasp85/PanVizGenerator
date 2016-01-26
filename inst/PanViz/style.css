@@ -1,0 +1,390 @@
+body {
+	position: relative;
+	font-family: sans-serif;
+	min-height: 100%;
+	min-width: 100%;
+	margin: 0;
+}
+h1 {
+	text-align: center;
+}
+#info {
+	padding: 0 15px;
+	background: lightgrey;
+	position: absolute;
+	top: 0;
+	min-height: 100%;
+}
+#logo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+#logo svg {
+	width: 200px;
+	margin: auto;
+	display: block;
+}
+#geneList {
+	width: 1800px;
+	background: whitesmoke;
+	padding-left: 20px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	min-height: 100%;
+}
+#topTable table tr td {
+	border-bottom: 1px solid lightgrey;
+}
+#geneList tr.hidden {
+	display: none;
+}
+#geneList tr td {
+	width: 10%;
+	padding-left: 5px;
+}
+#geneList tr td+td {
+	width: 30%;
+}
+#geneList tr td+td+td {
+	width: 10%;
+}
+#geneList tr td+td+td+td {
+	width: 30%;
+}
+#geneList tr td+td+td+td+td {
+	width: 20%;
+}
+#geneListBody {
+	font-size: small;
+	border-left: 0;
+	border-right: 0;
+}
+#geneList svg {
+	fill: none;
+	stroke: black;
+	stroke-width: 1;
+	fill-opacity: 0.5;
+	fill: white;
+}
+#geneList svg g .filled,circle {
+	fill: steelblue;
+}
+#geneList svg g:hover,circle:hover,g.selected,circle.selected {
+	fill-opacity: 1;
+	stroke-width: 2;
+}
+.inSubPan .domainCell{
+	background: goldenrod;
+}
+.inSubPan.Singleton .domainCell{
+	background: goldenrod;
+}
+.inSubPan.Accessory .domainCell{
+	background: forestgreen;
+}
+.inSubPan.Core .domainCell {
+	background: brown;
+}
+.domainCell::after{
+	content: '---';
+}
+.inSubPan.Singleton .domainCell::after{
+	content: 'Singleton';
+}
+.inSubPan.Accessory .domainCell::after{
+	content: 'Accessory';
+}
+.inSubPan.Core .domainCell::after{
+	content: 'Core';
+}
+#circle .selectOn {
+	opacity: 0.5;
+}
+#circle .selectOn:hover {
+	opacity: 1;
+	stroke-width: 1;
+	stroke: black;
+}
+#circle rect.parent.selectOn {
+	fill-opacity: 1;
+}
+#circle .children.selectOn:hover .parent {
+	fill-opacity: 0;
+	stroke-width: 1;
+	stroke: black;
+	
+}
+#circle .children.selectOn:hover text {
+	fill-opacity: 1;
+	stroke-width: 0;
+	stroke: none;
+	
+}
+.invisible {
+	opacity: 0;
+}
+#overall table {
+	margin-left: auto;
+	margin-right: auto;
+}
+#overall td {
+	text-align: right;
+}
+#goflux first {
+	width: 55%;
+}
+#goflux table {
+	width: 180px;
+}
+#goflux td {
+	text-align: right;
+}
+#legend {
+	font-size: x-small;
+	padding-top: 30px;
+}
+#legend tr {
+	height: 3em;
+}
+#legend td {
+	width: 33.3333%;
+	padding-right: 1px;
+}
+#legend td.hover{
+	background-color: white;
+}
+.progress path.background {
+	fill: whitesmoke;
+}
+.progress path.foreground {
+	fill: steelblue;
+}
+.progress text {
+	font-size: large;
+}
+.barGrid .major line{
+	width: 1;
+	stroke: lightgrey;
+/*    shape-rendering: crispEdges;	*/
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+/*    shape-rendering: crispEdges; */
+}
+#mdspca circle {
+	fill: white;
+	fill-opacity: 0;
+	stroke: grey;
+}
+
+svg text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+.link {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+/*	shape-rendering: crispEdges; */
+}
+.hoverLink {
+	fill: none;
+	stroke: white;
+	stroke-opacity: 0;
+	stroke-width: 10;
+}
+.leaf{
+	r: 5;
+}
+.leaf circle {
+	fill: white;
+	stroke: grey;
+}
+.leaf.selectedA circle, #mdspca circle.selectedA, circle.strainMark-a{
+	stroke: black;
+	stroke-width: 1.5;
+	fill: steelblue;
+	fill-opacity: 100;
+}
+.leaf.selectedB circle, #mdspca circle.selectedB, circle.strainMark-b{
+	stroke: black;
+	stroke-width: 1.5;
+	fill: firebrick;
+	fill-opacity: 100;
+}
+.leaf.selected text{
+	fill: steelblue;
+	font-weight: bold;
+}
+.unhover{
+	stroke: lightgrey;
+}
+.hover{
+	stroke: black;
+	stroke-width: 3;
+}
+.hover text{
+	stroke: none;
+	font-weight: bold;
+}
+.link.selected{
+	stroke-width: 2;
+}
+#selectLayer {
+	fill: steelblue;
+	fill-opacity: 0.2;
+}
+.scatterSwitch {
+	fill: whitesmoke;
+	stroke: white;
+}
+.scatterSwitch text {
+	fill: grey;
+	stroke: none;
+	cursor: default;
+}
+.scatterSwitch.selected rect {
+	fill: steelblue;
+}
+
+.scatterSwitch.selected text {
+	fill: black;
+}
+.domainArc, .domainRect{
+	stroke: black;
+	stroke-width: 2;
+}
+.domainArc text {
+	stroke: none;
+	fill: black;
+}
+.Singleton {
+	fill: goldenrod;
+}
+.Accessory {
+	fill: forestgreen;
+}
+.Core {
+	fill: brown;
+}
+.classArc, .transientArc, .strainBar, .classRect{
+	stroke: white;
+}
+.goChord.in {
+	stroke: black;
+	fill: green;
+	opacity: 0.5;
+}
+.goChord.out {
+	stroke: black;
+	fill: red;
+	opacity: 0.5;
+}
+.emptyClass {
+	stroke-opacity: 0;
+}
+.geneLink {
+	fill-opacity: 0.3;
+}
+.geneLink.simLink {
+	fill-opacity: 0.15;
+}
+.progress .background {
+	fill: #ccc;
+}
+.progress .foreground {
+	fill: #000;
+}
+.parent {
+	fill: white;
+	fill-opacity: 0.2;
+	stroke: white;
+	stroke-width: 3;
+}
+.child {
+	stroke: white;
+}
+.children:hover rect.parent {
+	fill: none;
+}
+.grandparent rect{
+	fill: steelblue;
+	stroke: white;
+	stroke-width: 3;
+}
+.grandparent text{
+	fill: white;
+}
+.trapez {
+	stroke: white;
+	stroke-width: 3;
+	fill: lightgrey;
+}
+@-webkit-keyframes load {
+	0%		{fill-opacity: 1;}
+	100%	{fill-opacity: 0;}
+}
+@keyframes load {
+	0%		{fill-opacity: 1;}
+	100%	{fill-opacity: 0;}
+}
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+#loading svg {
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 50%;
+	width: 50%;
+}
+#loading .core {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}
+#loading .accessory {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+#loading .singleton {
+	-webkit-animation-name: load;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-iteration-count: infinite;
+    /* Standard syntax */
+    animation-name: load;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
