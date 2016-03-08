@@ -1,0 +1,6 @@
+.Rproj.user
+.Rhistory
+.RData
+*.Rproj
+.Rbuildignore
+inst/shinyapps/

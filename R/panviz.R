@@ -164,7 +164,7 @@ setMethod(
 #' @describeIn panviz Method for pgVirtual subclasses from FindMyFriends
 #' 
 #' @importClassesFrom FindMyFriends pgVirtual
-#' @importFrom FindMyFriends groupInfo pgMatrix groupNames
+#' @importFrom FindMyFriends groupInfo groupNames
 #' 
 setMethod(
     'panviz', 'pgVirtual',
@@ -176,7 +176,7 @@ setMethod(
         }
         name <- ifelse(is.na(gInfo$description), groupNames(object), 
                        gInfo$description)
-        mat <- pgMatrix(object)
+        mat <- as(object, 'matrix')
         panviz(mat, name = name, go = gInfo$GO, ec = gInfo$EC, 
                location = location, consolidate = consolidate, 
                showcase = showcase, ...)
