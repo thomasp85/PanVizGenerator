@@ -17,6 +17,8 @@
 #'     getGO('auto')
 #' }
 #' 
+#' @importFrom utils download.file
+#' 
 #' @export
 #' 
 getGO <- function(mode = 'force') {

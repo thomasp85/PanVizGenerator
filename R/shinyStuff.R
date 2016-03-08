@@ -33,6 +33,7 @@ PanVizGenerator <- function(...) {
 #' Server logic for the PanVizGenerator shiny app
 #' 
 #' @importFrom shiny isolate observe downloadHandler outputOptions
+#' @importFrom utils zip
 #' 
 #' @noRd
 #' 

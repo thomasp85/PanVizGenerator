@@ -1,0 +1,7 @@
+Version 0.99.0
+________________________________________________________________________________
+* Submission for Bioconductor
+* Added vignette
+* Added panviz method for use of functionality in R (instead of just shiny)
+* Make gene ontology a subsequent download instead of bundle with package
+* Check usability of current GO before building PanViz

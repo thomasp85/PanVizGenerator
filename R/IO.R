@@ -92,6 +92,7 @@ createGeneInfo <- function(data) {
 #' 
 #' @importFrom jsonlite toJSON unbox
 #' @importFrom pcaMethods pca
+#' @importFrom stats cmdscale dist
 #' 
 #' @noRd
 #' 
@@ -129,6 +130,7 @@ createScatter <- function(data, dist = 'canberra', center = TRUE,
 #' @return A string with a json representation of data
 #' 
 #' @importFrom jsonlite toJSON
+#' @importFrom stats hclust dist
 #' 
 #' @noRd
 #' 
@@ -187,6 +189,8 @@ formatNode <- function(tree){
 #' @return A list that describes the hierarchical relationship of the data. Each
 #' non-leaf node contains the elements height, leaf and children. Each leaf node
 #' contains the elements name, height and leaf
+#' 
+#' @importFrom stats as.dendrogram
 #' 
 #' @noRd
 #' 
