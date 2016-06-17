@@ -1,8 +1,8 @@
 ---
 title: "Creating PanViz visualizations with PanVizGenerator"
 author: "Thomas Lin Pedersen"
-date: "`r doc_date()`"
-package: "`r pkg_ver('PanVizGenerator')`"
+date: "`r BiocStyle::doc_date()`"
+package: "`r BiocStyle::pkg_ver('PanVizGenerator')`"
 abstract: >
   PanViz is a new JavaScript based visualization tool for functionaly annotated
   pangenomes. PanVizGenerator is a companion package that facilitates the 
@@ -35,11 +35,11 @@ understand their pangenomes in a fluid, beautiful and easy manner.
 PanViz visualizations are fully self-contained html files that can be shared
 with coworkers and viewed offline if needed. PanVizGenerator is the intended 
 tool for creating PanViz visualizations from scratch using your own data. It 
-provides both an easy and informative GUI (based on `r CRANpkg("shiny")`), as
+provides both an easy and informative GUI (based on `r BiocStyle::CRANpkg("shiny")`), as
 well as a standard R interface. The GUI supports csv formatted pangenome
 matrices, while the programmatic interface in addition supports standard R 
 matrix and data.frame representation as well as the class system provided by
-`r Biocpkg("FindMyFriends")`.
+`r BiocStyle::Biocpkg("FindMyFriends")`.
 
 # Data requirements
 PanViz relies on two different types of data for its visualization approach. The
@@ -51,7 +51,7 @@ result.
 
 How this data is supplied depends on the user. The standard Bioconductor 
 approach to creating and working with pangenomes is the class system defined by
-`r Biocpkg("FindMyFriends")`. FindMyFriends provides functionality for adding
+`r BiocStyle::Biocpkg("FindMyFriends")`. FindMyFriends provides functionality for adding
 annotation to both the gene groups and genomes contained in a pangenome and if
 these facilities are used a PanViz can be created directly from that. If you
 wish to opt out of the FindMyFriends approach, or if the pangenome has been 
@@ -66,7 +66,7 @@ when required and caches it for later use, so this is not something you, as a
 user, should worry about. In order to force a fresh download of the gene 
 ontology for some reason, the `getGO()` function is provided.
 
-```{r, eval=TRUE, echo=TRUE}
+```{r, eval=TRUE, echo=TRUE, results='hide', message=FALSE}
 library(PanVizGenerator)
 getGO()
 ```
