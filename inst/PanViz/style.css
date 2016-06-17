@@ -190,14 +190,30 @@ svg text {
 	stroke-width: 1;
 /*	shape-rendering: crispEdges; */
 }
+#plot-area.prezoom{
+	cursor: zoom-in;
+}
 .hoverLink {
 	fill: none;
 	stroke: white;
 	stroke-opacity: 0;
 	stroke-width: 10;
 }
+.zoomed .leaf{
+	opacity: 100;
+	-webkit-transition: opacity 1s ease-in 0s;
+	transition: opacity 1s ease-in 0s;
+}
 .leaf{
-	r: 5;
+	r: 5px;
+	opacity: 0;
+	-webkit-transition: opacity 1s ease-out 0s;
+	transition: opacity 1s ease-out 0s;
+}
+.leaf.hover, .leaf.selectedA, .leaf.selectedB{
+	opacity: 100;
+	-webkit-transition: none;
+	transition: none;
 }
 .leaf circle {
 	fill: white;
@@ -225,6 +241,7 @@ svg text {
 .hover{
 	stroke: black;
 	stroke-width: 3;
+	opacity: 100;
 }
 .hover text{
 	stroke: none;
@@ -249,9 +266,12 @@ svg text {
 .scatterSwitch.selected rect {
 	fill: steelblue;
 }
+.prezoom.scatterSwitch.selected rect {
+	fill: forestgreen;
+}
 
 .scatterSwitch.selected text {
-	fill: black;
+	fill: white;
 }
 .domainArc, .domainRect{
 	stroke: black;
@@ -323,68 +343,130 @@ svg text {
 	stroke-width: 3;
 	fill: lightgrey;
 }
-@-webkit-keyframes load {
-	0%		{fill-opacity: 1;}
-	100%	{fill-opacity: 0;}
-}
-@keyframes load {
-	0%		{fill-opacity: 1;}
-	100%	{fill-opacity: 0;}
-}
-#loading {
+#tutorial {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: white;
-}
-#loading svg {
-	margin: auto;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
 	right: 0;
-	height: 50%;
-	width: 50%;
+	bottom: 0;
 }
-#loading .core {
-	-webkit-animation-name: load;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 0;
-    -webkit-animation-iteration-count: infinite;
-    /* Standard syntax */
-    animation-name: load;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-delay: 0;
-    animation-iteration-count: infinite;
+.infolink { 
+	text-decoration: none; 
+	vertical-align: middle; 
 }
-#loading .accessory {
-	-webkit-animation-name: load;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 1s;
-    -webkit-animation-iteration-count: infinite;
-    /* Standard syntax */
-    animation-name: load;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-delay: 1s;
-    animation-iteration-count: infinite;
+.infolink:before {
+    content: '?';
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 1.8ex;
+    height: 1.8ex;
+    font-size: 20pt;
+    line-height: 1.8ex;
+    border-radius: 1.2ex;
+    margin-right: 4px; transform: translateY(-0.3ex);
+    padding: 1px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+    text-decoration: none;
 }
-#loading .singleton {
-	-webkit-animation-name: load;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 2s;
-    -webkit-animation-iteration-count: infinite;
-    /* Standard syntax */
-    animation-name: load;
-    animation-duration: 3s;
-    animation-timing-function: linear;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
+
+.infolink:hover:before
+{
+    color: white;
+    background: firebrick;
+    border-color: firebrick;
+    text-decoration: none;
 }
+
+/* Slider styling */
+/*
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+*/
