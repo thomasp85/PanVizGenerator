@@ -1682,6 +1682,7 @@ var GeneList = function(){
 	var genes = new Set();
 	var fullGenes;
 	var selected = null;
+	var tableSize = 100;
 // Methods
 	var createHeaderButtons = function(radius) {
 	
@@ -1767,10 +1768,19 @@ var GeneList = function(){
 	};
 	var updateListRows = function() {
 
-		d3.select('#geneListBody').selectAll('tr')
-			.classed('hidden', function(d) {
-				return !genes.contains(d.id);
-			});
+		var hiddenRows = d3.select('#geneListBody').selectAll('.geneRow')
+			.classed('hidden', true)
+			.filter(function(d) {
+				return genes.contains(d.id);
+			})
+		var nRemain = hiddenRows.size() - tableSize;
+		hiddenRows
+			.filter(function(d, i) {
+				return i < tableSize
+			})
+			.classed('hidden', false);
+		d3.select('#geneListBody .addMoreRows')
+			.classed('hidden', nRemain <= 0);
 	};
 	var updateListColor = function() {
 		d3.selectAll('.geneRow')
@@ -1810,7 +1820,20 @@ var GeneList = function(){
 		den.selectAll('.leaf')
 			.classed('hover', false);
 	};
-
+	var showMoreRows = function() {
+		var hiddenRows = d3.select('#geneListBody').selectAll('.geneRow.hidden')
+			.filter(function(d) {
+				return genes.contains(d.id);
+			})
+		var nRemain = hiddenRows.size() - tableSize;
+		hiddenRows
+			.filter(function(d, i) {
+				return i < tableSize
+			})
+			.classed('hidden', false);
+		d3.select('#geneListBody .addMoreRows')
+			.classed('hidden', nRemain <= 0);
+	}
 
 // PUBLIC
 
@@ -1832,6 +1855,9 @@ var GeneList = function(){
 			.classed('geneRow', true)
 			.on('mouseover', rowHover)
 			.on('mouseout', rowUnhover)
+			.classed('hidden', function(d, i) {
+				return i >= tableSize;
+			})
 			.selectAll('td').data(function(d,i) {return [d.id, d.name, '', d.go, d.ec];})
 				.enter()
 				.append('td')
@@ -1842,6 +1868,19 @@ var GeneList = function(){
 					}
 					return d;
 				});
+		table
+			.append('tr')
+			.classed('addMoreRows', true)
+				.append('td')
+				.attr('colspan', 5)
+					.append('span')
+					.text('Show more...')
+					.on('click', showMoreRows)
+		var nrows = table.selectAll('tr').size();
+		if (nrows < tableSize) {
+			table.select('.addMoreRows')
+				.classed('hidden', true);
+		}
 	};
 	this.isSelected = function() {
 		return selected;

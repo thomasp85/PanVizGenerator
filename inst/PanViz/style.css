@@ -55,6 +55,18 @@ h1 {
 #geneList tr td+td+td+td+td {
 	width: 20%;
 }
+#geneList .addMoreRows {
+	font-size: large;
+	color: steelblue;
+	text-align: center;
+	font-style: italic;
+}
+#geneList .addMoreRows span {
+	cursor: pointer
+}
+#geneList .addMoreRows span:hover {
+	font-weight: bold;
+}
 #geneListBody {
 	font-size: small;
 	border-left: 0;
