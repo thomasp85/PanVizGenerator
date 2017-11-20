@@ -4,9 +4,9 @@
 \name{panviz}
 \alias{panviz}
 \alias{panviz,character-method}
-\alias{panviz,data.frame-method}
-\alias{panviz,matrix-method}
 \alias{panviz,pgVirtual-method}
+\alias{panviz,matrix-method}
+\alias{panviz,data.frame-method}
 \title{Convert pangenome into PanViz}
 \usage{
 panviz(object, ...)
@@ -110,6 +110,7 @@ rows in the pangenome matrix if given.
 \item \code{data.frame}: Method for pangenome matrix as data.frame (will be coerced 
 to matrix)
 }}
+
 \examples{
 if(interactive()) {
     exampleFile <- system.file('extdata', 'exampleData.csv')
@@ -121,4 +122,3 @@ if(interactive()) {
 \code{\link{PanVizGenerator}} for a shiny interface to converting 
 csv files.
 }
-

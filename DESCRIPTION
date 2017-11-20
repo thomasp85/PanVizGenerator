@@ -1,12 +1,8 @@
 Package: PanVizGenerator
 Type: Package
 Title: Generate PanViz visualisations from your pangenome
-<<<<<<< HEAD
-Version: 1.1.4
-=======
 Version: 1.7.0
->>>>>>> upstream/master
-Date: 2016-10-06
+Date: 2017-11-20
 Author: Thomas Lin Pedersen
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
 Description: PanViz is a JavaScript based visualisation tool for functionaly
@@ -43,5 +39,4 @@ Collate:
     'panviz.R'
     'shinyStuff.R'
     'zzz.R'
-RoxygenNote: 5.0.1
-
+RoxygenNote: 6.0.1

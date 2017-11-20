@@ -28,4 +28,3 @@ if (interactive()) {
 \seealso{
 \code{\link{panviz}} for an R API for the same functionality.
 }
-

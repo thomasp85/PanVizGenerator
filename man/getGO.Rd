@@ -28,4 +28,3 @@ if (interactive()) {
 \references{
 \url{http://geneontology.org}
 }
-

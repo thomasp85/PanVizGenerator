@@ -82,7 +82,6 @@ checkVersion <- function() {
     as.Date(currentVersion, 'releases/%Y-%m-%d') >= 
         as.Date(publicVersion, 'releases/%Y-%m-%d')
 }
-
 parseOBO <- function(file) {
     obo <- readLines(file, warn = FALSE)
     obo <- obo[seq(which(obo == '[Term]')[1], length(obo))]
@@ -159,6 +158,8 @@ parseOBO <- function(file) {
         replacedByEdges,
         relationshipEdges
     )
+    edges <- edges[!is.na(edges$from) & !is.na(edges$to), ]
+    row.names(edges) <- NULL
     list(
         vertices = vertices,
         edges = edges
@@ -208,6 +209,7 @@ graphToGo <- function(graph) {
                                     "synonym", "xref")))
     go$vertices <- go$vertices[, vertexColOrder]
     rownames(go$vertices) <- NULL
+    rownames(go$edges) <- NULL
     go
 }
 #' @importFrom igraph induced_subgraph V E vertex_attr vertex_attr<- vertex_attr_names gorder

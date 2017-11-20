@@ -96,6 +96,7 @@ setGeneric('panviz', def = function(object, ...) {
 #' @describeIn panviz Method for file paths
 #' 
 #' @importFrom tools file_ext
+#' @importFrom utils read.csv
 #' 
 setMethod(
     'panviz', 'character',
@@ -183,6 +184,7 @@ setMethod(
     }
 )
 #' @describeIn panviz Method for pangenome matrix as numeric/integer matrix
+#' @importFrom utils browseURL
 #' 
 setMethod(
     'panviz', 'matrix',
